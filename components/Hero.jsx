@@ -29,7 +29,7 @@ export default function Hero() {
           className="inline-flex items-center gap-2 mb-8 px-4 py-2 rounded-md glass font-mono text-xs"
         >
           <Terminal size={12} className="text-green" style={{ color: '#3fb950' }} />
-          <span style={{ color: '#3fb950' }}>rohit@tollring</span>
+          <span style={{ color: '#3fb950' }}>rohit@portfolio</span>
           <span style={{ color: '#8b949e' }}>:~$</span>
           <span style={{ color: '#e6edf3' }} className="cursor">whoami</span>
         </motion.div>
