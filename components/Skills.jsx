@@ -122,7 +122,7 @@ export default function Skills() {
           transition={{ duration: 0.7, delay: 0.5 }}
           className="mt-12 flex flex-wrap gap-3"
         >
-          {['Cisco UCaaS', 'Microsoft Teams', 'SQL Server', 'Linux', 'Windows Server', 'SalesForce CRM', 'ITIL', 'Scrum', 'Azure', 'Network Protocols', 'VoIP', 'Data Center Mgmt'].map((tag) => (
+          {['Cisco UCaaS', 'Microsoft Teams', 'SQL Server', 'Linux', 'Windows Server', 'Zoho One CRM', 'ITIL', 'Scrum', 'Azure', 'Network Protocols', 'VoIP', 'Data Center Mgmt'].map((tag) => (
             <span key={tag}
               className="px-4 py-2 rounded-full text-xs font-mono text-slate-400 glass hover:text-electric-400 hover:border-electric-400/30 transition-all duration-200 cursor-default">
               {tag}

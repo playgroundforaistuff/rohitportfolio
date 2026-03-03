@@ -5,11 +5,11 @@ import { Send, Bot, User, Sparkles, RotateCcw } from 'lucide-react'
 import { useInView } from 'framer-motion'
 
 const suggestions = [
-  "How did Rohit improve ticket resolution at Tollring?",
-  "What was the RAPID escalation framework?",
-  "Tell me about his UCaaS and SQL expertise",
-  "What tools and platforms has he worked with?",
-  "How did he build and lead his team?",
+  "How did Rohit reduce repeat tickets by 50%?",
+  "What SLA frameworks did he build at Tollring?",
+  "Walk me through the escalation process he authored",
+  "What partners did Rohit manage and how?",
+  "What makes Rohit's delivery approach different?",
 ]
 
 export default function AiChat() {
@@ -70,7 +70,7 @@ export default function AiChat() {
       <div className="absolute inset-0"
         style={{ background: 'radial-gradient(ellipse 70% 50% at 30% 50%, rgba(34,211,238,0.04) 0%, transparent 70%)' }} />
 
-      <div className="max-w-3xl mx-auto px-6">
+      <div className="max-w-4xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={inView ? { opacity: 1, x: 0 } : {}}
@@ -124,7 +124,8 @@ export default function AiChat() {
           </div>
 
           {/* Messages */}
-          <div className="h-80 overflow-y-auto chat-scroll p-6 space-y-4">
+          
+         <div className="h-[480px] overflow-y-auto chat-scroll p-6 space-y-4">
             <AnimatePresence>
               {messages.map((msg, i) => (
                 <motion.div
@@ -145,7 +146,7 @@ export default function AiChat() {
                       : <User size={13} className="text-electric-400" />
                     }
                   </div>
-                  <div className={`max-w-xs lg:max-w-md px-4 py-3 rounded-2xl text-sm leading-relaxed ${
+                  <div className={`max-w-sm lg:max-w-xl px-5 py-4 rounded-2xl text-sm leading-relaxed ${
                     msg.role === 'user'
                       ? 'text-white rounded-tr-sm'
                       : 'text-slate-300 rounded-tl-sm'
