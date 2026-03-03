@@ -5,10 +5,11 @@ import { Send, Bot, User, Sparkles, RotateCcw } from 'lucide-react'
 import { useInView } from 'framer-motion'
 
 const suggestions = [
-  "What's Rohit's experience with SaaS delivery?",
-  "Tell me about his key achievements",
-  "What certifications does Rohit hold?",
-  "How has Rohit improved NPS scores?",
+  "How did Rohit improve ticket resolution at Tollring?",
+  "What was the RAPID escalation framework?",
+  "Tell me about his UCaaS and SQL expertise",
+  "What tools and platforms has he worked with?",
+  "How did he build and lead his team?",
 ]
 
 export default function AiChat() {

@@ -1,160 +1,117 @@
 'use client'
 import { motion } from 'framer-motion'
-import { ArrowDown, Mail, Linkedin } from 'lucide-react'
+import { ArrowDown, Mail, Linkedin, Terminal } from 'lucide-react'
 
-const words = ['Delivery.', 'Operations.', 'Leadership.', 'Impact.']
+const stats = [
+  { val: '15+', label: 'Years' },
+  { val: '200+', label: 'Partner Meetings' },
+  { val: '30%', label: 'Resolution Boost' },
+  { val: '95%', label: 'First-Contact Fix' },
+]
 
 export default function Hero() {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden grid-bg">
-      {/* Radial gradient backdrop */}
-      <div className="absolute inset-0 bg-radial-gradient" style={{
-        background: 'radial-gradient(ellipse 80% 60% at 50% 0%, rgba(34,211,238,0.08) 0%, transparent 70%)'
-      }} />
 
-      {/* Animated orbs */}
-      <motion.div
-        className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full"
-        style={{ background: 'radial-gradient(circle, rgba(34,211,238,0.06) 0%, transparent 70%)' }}
-        animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.8, 0.5] }}
-        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-      />
-      <motion.div
-        className="absolute bottom-1/4 right-1/4 w-64 h-64 rounded-full"
-        style={{ background: 'radial-gradient(circle, rgba(129,140,248,0.06) 0%, transparent 70%)' }}
-        animate={{ scale: [1.2, 1, 1.2], opacity: [0.3, 0.6, 0.3] }}
-        transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
-      />
+      {/* Ambient glows */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full opacity-20"
+        style={{ background: 'radial-gradient(ellipse, #3fb950 0%, transparent 70%)', filter: 'blur(60px)' }} />
+      <div className="absolute bottom-1/4 right-1/4 w-64 h-64 rounded-full opacity-10"
+        style={{ background: 'radial-gradient(ellipse, #d47c0f 0%, transparent 70%)', filter: 'blur(40px)' }} />
 
-      {/* Floating grid lines */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(5)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute h-px w-full"
-            style={{
-              top: `${20 + i * 15}%`,
-              background: `linear-gradient(90deg, transparent 0%, rgba(34,211,238,${0.03 + i * 0.01}) 50%, transparent 100%)`
-            }}
-            animate={{ x: ['-100%', '100%'] }}
-            transition={{ duration: 20 + i * 5, repeat: Infinity, ease: 'linear', delay: i * 2 }}
-          />
-        ))}
-      </div>
+      <div className="relative z-10 max-w-5xl mx-auto px-6">
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
-        {/* Badge */}
+        {/* Terminal prompt badge */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 mb-8 px-4 py-2 rounded-full glass"
+          transition={{ duration: 0.5 }}
+          className="inline-flex items-center gap-2 mb-8 px-4 py-2 rounded-md glass font-mono text-xs"
         >
-          <span className="w-2 h-2 rounded-full bg-electric-400 animate-pulse" />
-          <span className="text-electric-400 font-mono text-xs tracking-widest uppercase">
-            Available for Senior Roles
-          </span>
+          <Terminal size={12} className="text-green" style={{ color: '#3fb950' }} />
+          <span style={{ color: '#3fb950' }}>rohit@tollring</span>
+          <span style={{ color: '#8b949e' }}>:~$</span>
+          <span style={{ color: '#e6edf3' }} className="cursor">whoami</span>
         </motion.div>
 
         {/* Name */}
         <motion.h1
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.1 }}
-          className="font-display text-6xl md:text-8xl font-800 tracking-tight mb-4 leading-none"
-          style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800 }}
+          transition={{ duration: 0.7, delay: 0.1 }}
+          className="font-sans font-700 text-5xl md:text-7xl leading-tight mb-3"
+          style={{ fontWeight: 700 }}
         >
-          <span className="text-white">Rohit</span>{' '}
-          <span className="gradient-text">Kanojia</span>
+          Rohit Kanojia
         </motion.h1>
 
         {/* Title */}
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-slate-400 text-lg md:text-xl mb-3 tracking-wide"
-          style={{ fontFamily: 'DM Sans, sans-serif' }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="text-lg md:text-xl mb-2 font-mono"
+          style={{ color: '#3fb950' }}
         >
-          Delivery & Ops Leader · Enterprise SaaS · Hybrid & On-Prem Support
+          Delivery &amp; Ops Leader
+        </motion.p>
+        <motion.p
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.25 }}
+          className="text-base mb-10"
+          style={{ color: '#8b949e' }}
+        >
+          Enterprise SaaS · UCaaS · Hybrid &amp; On-Prem Support · Partner Management
         </motion.p>
 
-        {/* Stats bar */}
+        {/* Stats */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="flex flex-wrap justify-center gap-8 mt-10 mb-12"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.35 }}
+          className="flex flex-wrap gap-6 mb-10"
         >
-          {[
-            { val: '15+', label: 'Years Experience' },
-            { val: '200+', label: 'Partner Meetings' },
-            { val: '30%', label: 'Ticket Resolution Boost' },
-            { val: '25%', label: 'NPS Improvement' },
-          ].map((s, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.4 + i * 0.1 }}
-              className="text-center"
-            >
-              <div className="text-3xl font-display font-800 text-electric-400 glow-text"
-                style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700 }}>
+          {stats.map((s, i) => (
+            <motion.div key={i} initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 + i * 0.08 }}
+              className="glass rounded-lg px-5 py-3 text-center min-w-[90px]">
+              <div className="font-mono font-500 text-xl" style={{ color: i % 2 === 0 ? '#3fb950' : '#d47c0f' }}>
                 {s.val}
               </div>
-              <div className="text-slate-500 text-xs tracking-wider uppercase mt-1">{s.label}</div>
+              <div className="text-xs mt-0.5" style={{ color: '#8b949e' }}>{s.label}</div>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* CTA Buttons */}
+        {/* CTAs */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="flex flex-wrap justify-center gap-4"
+          transition={{ delay: 0.55 }}
+          className="flex flex-wrap gap-4"
         >
-          <a
-            href="#contact"
-            className="group flex items-center gap-2 px-8 py-4 rounded-full font-medium transition-all duration-300"
-            style={{
-              background: 'linear-gradient(135deg, #22d3ee, #818cf8)',
-              color: '#020817',
-              fontFamily: 'DM Sans, sans-serif'
-            }}
-          >
-            <Mail size={16} />
-            <span>Contact Me</span>
+          <a href="#contact"
+            className="flex items-center gap-2 px-7 py-3 rounded-md font-medium transition-all duration-200 hover:opacity-90"
+            style={{ background: '#3fb950', color: '#0d1117' }}>
+            <Mail size={15} /> Contact Me
           </a>
-          <a
-            href="#experience"
-            className="group flex items-center gap-2 px-8 py-4 rounded-full font-medium glass text-slate-300 hover:text-white hover:border-electric-400/40 transition-all duration-300"
-            style={{ fontFamily: 'DM Sans, sans-serif' }}
-          >
-            View My Work
-            <ArrowDown size={16} className="group-hover:translate-y-1 transition-transform" />
+          <a href="#experience"
+            className="flex items-center gap-2 px-7 py-3 rounded-md font-medium glass transition-all duration-200 hover:border-green-500"
+            style={{ color: '#e6edf3' }}>
+            View Work <ArrowDown size={15} />
           </a>
-          <a
-            href="https://www.linkedin.com/in/rohit-kan"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 px-6 py-4 rounded-full font-medium glass text-slate-400 hover:text-electric-400 transition-all duration-300"
-          >
-            <Linkedin size={16} />
+          <a href="https://www.linkedin.com/in/rohit-kan" target="_blank" rel="noopener noreferrer"
+            className="flex items-center gap-2 px-5 py-3 rounded-md glass transition-all duration-200"
+            style={{ color: '#8b949e' }}>
+            <Linkedin size={15} />
           </a>
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        animate={{ y: [0, 8, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-      >
-        <div className="w-px h-16 mx-auto"
-          style={{ background: 'linear-gradient(to bottom, rgba(34,211,238,0.5), transparent)' }} />
-      </motion.div>
+      {/* Bottom fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-32"
+        style={{ background: 'linear-gradient(to top, #0d1117, transparent)' }} />
     </section>
   )
 }

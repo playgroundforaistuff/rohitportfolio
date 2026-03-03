@@ -1,99 +1,90 @@
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --font-display: 'Syne', sans-serif;
-  --font-body: 'DM Sans', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
-  --navy-950: #020817;
-  --navy-900: #0a1628;
-  --navy-800: #0f2040;
-  --electric: #22d3ee;
-  --electric-dim: rgba(34, 211, 238, 0.15);
+  --bg:        #0d1117;
+  --bg2:       #161b22;
+  --bg3:       #1f2937;
+  --green:     #3fb950;
+  --green-dim: rgba(63,185,80,0.12);
+  --amber:     #d47c0f;
+  --amber-dim: rgba(212,124,15,0.12);
+  --text:      #e6edf3;
+  --muted:     #8b949e;
+  --border:    rgba(63,185,80,0.15);
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 
 body {
-  background: var(--navy-950);
-  color: #e2e8f0;
-  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Space Grotesk', sans-serif;
   overflow-x: hidden;
 }
 
-::selection {
-  background: rgba(34, 211, 238, 0.3);
-  color: #ffffff;
+::selection { background: rgba(63,185,80,0.25); color: #fff; }
+
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--green); border-radius: 2px; }
+
+.glass {
+  background: rgba(22,27,34,0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
 }
 
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 4px;
-}
-::-webkit-scrollbar-track {
-  background: var(--navy-950);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--electric);
-  border-radius: 2px;
+.amber-glass {
+  background: rgba(22,27,34,0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(212,124,15,0.2);
 }
 
-/* Noise texture overlay */
-body::before {
+/* Scanline effect — subtle terminal feel */
+body::after {
   content: '';
   position: fixed;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.03) 2px,
+    rgba(0,0,0,0.03) 4px
+  );
   pointer-events: none;
   z-index: 9999;
-  opacity: 0.4;
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #22d3ee 0%, #818cf8 50%, #22d3ee 100%);
-  background-size: 200% auto;
+  background: linear-gradient(135deg, #3fb950 0%, #d47c0f 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: shimmer 4s linear infinite;
 }
 
-@keyframes shimmer {
-  to { background-position: 200% center; }
-}
-
-.glass {
-  background: rgba(15, 32, 64, 0.6);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(34, 211, 238, 0.1);
-}
-
-.glow {
-  box-shadow: 0 0 30px rgba(34, 211, 238, 0.15), 0 0 60px rgba(34, 211, 238, 0.05);
-}
-
-.glow-text {
-  text-shadow: 0 0 20px rgba(34, 211, 238, 0.5);
-}
+.green-glow { box-shadow: 0 0 20px rgba(63,185,80,0.2); }
+.amber-glow { box-shadow: 0 0 20px rgba(212,124,15,0.2); }
 
 .grid-bg {
-  background-image: 
-    linear-gradient(rgba(34, 211, 238, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(34, 211, 238, 0.03) 1px, transparent 1px);
-  background-size: 60px 60px;
+  background-image:
+    linear-gradient(rgba(63,185,80,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(63,185,80,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
 }
 
-.chat-scroll::-webkit-scrollbar { width: 3px; }
-.chat-scroll::-webkit-scrollbar-track { background: transparent; }
-.chat-scroll::-webkit-scrollbar-thumb { background: rgba(34,211,238,0.3); border-radius: 2px; }
+.chat-scroll::-webkit-scrollbar { width: 2px; }
+.chat-scroll::-webkit-scrollbar-thumb { background: rgba(63,185,80,0.3); }
+
+/* Terminal cursor blink */
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+.cursor::after {
+  content: '▌';
+  color: var(--green);
+  animation: blink 1s step-end infinite;
+}
